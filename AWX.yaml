@@ -1,6 +1,6 @@
 ---
 - name: Assign IP addresses to network devices
-  hosts: localhost  # Run the playbook on the AWX server itself
+  hosts: awx.example.com
   gather_facts: no
   tasks:
     - name: Assign IP address to Sauron1
