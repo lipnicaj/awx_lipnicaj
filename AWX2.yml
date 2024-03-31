@@ -1,10 +1,22 @@
 ---
-- name: ping playbook
-  hosts: all
-  beome: yes
+- name: Assign IP addresses to network devices
+  hosts: localhost  # Run the playbook on the AWX server itself
+  gather_facts: no
   tasks:
-    - name: Run task of pinging hosts
-      ping:
-    - name: debug task
-      debug:
-        msg: "{{ ansible_facts }}"
+    - name: Assign IP address to Sauron1
+      ansible.builtin.add_host:
+        name: Sauron1
+        ansible_host: 192.168.1.10
+        ansible_user: lipnicaj
+        ansible_password: telecomS144
+        groups: NetworkDevices
+        description: "This is Sauron1, a mock network device with IP address 192.168.1.10."
+
+    - name: Assign IP address to Darth1
+      ansible.builtin.add_host:
+        name: Darth1
+        ansible_host: 192.168.1.20
+        ansible_user: lipnicaj
+        ansible_password: telecomS144
+        groups: NetworkDevices
+        description: "This is Darth1, another mock network device with IP address 192.168.1.20."
