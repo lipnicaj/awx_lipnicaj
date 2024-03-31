@@ -1,11 +1,18 @@
 ---
-- name: Example
-  hosts: localhost
+- name: Assign IP addresses to network devices
+  hosts: localhost  # Run the playbook on the AWX server itself
   gather_facts: no
-  vars:
-    aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-    aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
   tasks:
-    - name: Placeholder task using AWS credentials
-      debug:
-        msg: "Using AWS credentials securely without printing them"
+    - name: Assign IP address to Sauron1
+      ansible.builtin.add_host:
+        name: Sauron1
+        ansible_host: 192.168.1.10
+        groups: NetworkDevices
+        description: "This is Sauron1, a mock network device with IP address 192.168.1.10."
+
+    - name: Assign IP address to Darth1
+      ansible.builtin.add_host:
+        name: Darth1
+        ansible_host: 192.168.1.20
+        groups: NetworkDevices
+        description: "This is Darth1, another mock network device with IP address 192.168.1.20."
