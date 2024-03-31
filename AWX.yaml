@@ -1,0 +1,11 @@
+---
+- name: Example
+  hosts: localhost
+  gather_facts: no
+  vars:
+    aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+    aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+  tasks:
+    - name: Placeholder task using AWS credentials
+      debug:
+        msg: "Using AWS credentials securely without printing them"
