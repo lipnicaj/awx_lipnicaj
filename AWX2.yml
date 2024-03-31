@@ -1,0 +1,10 @@
+---
+- name: ping playbook
+  hosts: all
+  beome: yes
+  tasks:
+    - name: Run task of pinging hosts
+      ping:
+    - name: debug task
+      debug:
+        msg: "{{ ansible_facts }}"
