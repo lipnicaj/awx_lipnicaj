@@ -1,6 +1,6 @@
 ---
 - name: Assign IP addresses to network devices
-  hosts: awx.example.com
+  hosts: localhost
   gather_facts: no
   tasks:
     - name: Assign IP address to Sauron1
